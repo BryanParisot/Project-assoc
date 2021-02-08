@@ -1,0 +1,41 @@
+.picture{
+    height: 400px;
+    background-image: url('../../images/cat.jpeg');
+    @include backgroundPos;
+    @include verticalCenter;
+    margin-bottom: 150px;
+
+    h1{
+        color:white;
+    }
+}
+.block{
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+
+}
+
+.block_animals{
+    height: 400px;
+    background-image: url('../../images/cat.jpeg');
+    @include backgroundPos;
+    @include verticalCenter;
+    flex-direction: column;
+    margin-top: 200px;
+    margin-bottom: 200px;
+
+    h2{
+        color: white;
+        margin-bottom: 100px;
+    }
+}
+
+.maps{
+    display: flex;
+    justify-content: center;
+
+    iframe{
+        width: 80%;
+    }
+}
