@@ -1,3 +1,7 @@
+li {
+  list-style: none;
+}
+
 .picture {
   height: 400px;
   background-image: url("../../images/cat.jpeg");
@@ -29,6 +33,7 @@
 .block_animals {
   height: 400px;
   background-image: url("../../images/cat.jpeg");
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -65,5 +70,38 @@
 
 .maps iframe {
   width: 80%;
+  margin-bottom: 100px;
+}
+
+.boutton {
+  margin-bottom: 100px;
+}
+
+.footer {
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+}
+
+.footer .first_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  height: 100%;
+}
+
+.footer .first_block li {
+  margin-top: 20px;
+}
+
+.footer .second_block {
+  width: 50%;
+  height: 100%;
 }
 /*# sourceMappingURL=style.css.map */

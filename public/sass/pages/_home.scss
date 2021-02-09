@@ -19,6 +19,7 @@
 .block_animals{
     height: 400px;
     background-image: url('../../images/cat.jpeg');
+    background-attachment: fixed;
     @include backgroundPos;
     @include verticalCenter;
     flex-direction: column;
@@ -37,5 +38,31 @@
 
     iframe{
         width: 80%;
+        margin-bottom: 100px;
     }
+}
+.boutton{
+    margin-bottom: 100px;
+}
+.footer{
+    height: 200px;
+    display: flex;
+    color: white;
+
+
+    .first_block{
+        display: flex;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+
+        li{
+            margin-top: 20px;
+        }
+    }
+    .second_block{
+        width: 50%;
+        height: 100%;
+    }
+
 }
