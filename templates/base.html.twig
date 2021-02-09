@@ -12,7 +12,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Project Association</a>
+            <a class="navbar-brand" href="/">Project Association</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -20,11 +20,11 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
-                  <a class="nav-link" href="#">Annonces
+                  <a class="nav-link" href="/blog">Annonces
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Créer une annonce</a>
+                  <a class="nav-link" href="/blog/new">Créer une annonce</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">S'inscrire</a>
@@ -38,7 +38,19 @@
               </form>
             </div>
           </nav>
+
           {% block body %}{% endblock %}
 
+          <footer class="bg-primary">
+            <div class="bg-primary footer">
+                <div class="first_block">
+                    <ul>
+                        <li><i class="fas fa-map-marked"></i> 12 rue des radis maudits</li>
+                        <li><i class="fas fa-phone"></i> 0789899772</li>
+                    </ul></div>
+                <div class="second_block"></div>
+            </div>
+                <p class="text-center">© 2020 Copyright: Parisot Bryan 2021</p>
+            </footer>
     </body>
 </html>
