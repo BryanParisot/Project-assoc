@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+<div class="picture">
+    <h1>{{ title }}</h1>
+</div>
+
+{{ form_start(formArticle)}}
+
+    <div class="container">
+        {{ form_row(formArticle.prenom, {'attr': {'placeholder': "Entrer le prenom de l'animal *"}}) }}
+        {{ form_row(formArticle.race, {'attr': {'placeholder': "Entrer la race de l'animal *"}}) }}
+        {{ form_row(formArticle.sexe, {'attr': {'placeholder': "Entrer le sexe de l'animal ( male ou femelle ) *"}}) }}
+        {{ form_row(formArticle.age, {'attr': {'placeholder': "Entrer l'age de l'animal en chiffre seulement *"}}) }}
+        {{ form_row(formArticle.descriptif, {'attr': {'placeholder': "Entrer ici le petit descriptif qui va apparaitre dans les annonces * "}}) }}
+        {{ form_row(formArticle.grand_descriptif, {'attr': {'placeholder': "Entrer ici le grand descriptif, qui va apparaitre dans l'annonce *"}}) }}
+        {{ form_row(formArticle.Entente, {'attr': {'placeholder': "Entrer ici si l'animal s'entend avec des animaux si oui lesquels, ou non *"}}) }}
+
+
+        <button class="btn btn-primary mb-4 mt-4" type="submit">
+            {% if editMode %}
+                Enregister les modification
+
+            {% else %}
+                Ajouter l'article
+
+            {% endif %}
+                </button>
+    </div>
+
+
+
+{{ form_end(formArticle)}}
+
+{% endblock %}

@@ -10,7 +10,7 @@
 <div class="d-flex justify-content-center mb-4">
 <div class="btn-group">
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Action
+      type
     </button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -21,7 +21,7 @@
     </ul>
 
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Action
+        lieu
       </button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Action</a></li>
@@ -30,73 +30,38 @@
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="#">Separated link</a></li>
       </ul>
+
+      <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Age
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+      </ul>
+
   
   </div>
 </div>
 
 <div class="container">
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card">
-        <img src="images/cat.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. (descriptif de l'animal)</p>
-          <a href="{{ path('blog_show')}}" class="btn btn-primary">Voir l'animal</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="images/cat.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. (descriptif de l'animal)</p>
-          <a href="{{ path('blog_show')}}" class="btn btn-primary">Voir l'animal</a>
 
-        </div>
-      </div>
-    </div>
-    <div class="col mb-4">
-      <div class="card">
-        <img src="images/cat.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. (descriptif de l'animal)</p>
-          <a href="{{ path('blog_show')}}" class="btn btn-primary">Voir l'animal</a>
-        </div>
-      </div>
-    </div>
-    <div class="col mb-4">
+    {% for article in articles %}
+        <div class="col mb-4">
         <div class="card">
-          <img src="images/cat.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. (descriptif de l'animal)</p>
-            <a href="{{ path('blog_show')}}" class="btn btn-primary">Voir l'animal</a>
+            <img src="images/cat.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{ article.prenom }}</h5>
+            <p class="card-text">{{ article.descriptif | raw }}</p>
+            <p> l'annonce a été mis en ligne le : {{ article.createdAt | date('d/n/Y') }}</p>
+            <a href="{{ path('blog_show', {'id': article.id}) }}" class="btn btn-primary">Voir l'animal</a>
+            </div>
         </div>
         </div>
-      </div>
-      <div class="col mb-4">
-        <div class="card">
-          <img src="images/cat.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. (descriptif de l'animal)</p>
-            <a href="{{ path('blog_show')}}" class="btn btn-primary">Voir l'animal</a>
-        </div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="card">
-          <img src="images/cat.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. (descriptif de l'animal)</p>
-            <a href="{{ path('blog_show')}}" class="btn btn-primary">Voir l'animal</a>
-        </div>
-        </div>
-      </div>
+    {% endfor%}
   </div>
 </div>
 

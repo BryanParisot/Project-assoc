@@ -12,7 +12,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="/">Project Association</a>
+            <a class="navbar-brand" href="{{ path('home') }}">Project Association</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -20,11 +20,11 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
-                  <a class="nav-link" href="/blog">Annonces
+                  <a class="nav-link" href="{{ path('blog') }}">Annonces
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/blog/new">Créer une annonce</a>
+                  <a class="nav-link" href="{{ path('blog_annonce') }}">Créer une annonce</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">S'inscrire</a>

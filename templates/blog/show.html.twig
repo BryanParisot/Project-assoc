@@ -4,7 +4,7 @@
 <div class="picture">
     <h1>{{ title }}</h1>
 </div>
-<h3 class="text-center">NOM DU CHIEN</h3>
+<h3 class="text-center"> {{ article.prenom}}</h3>
 
 <div class="container d-flex justify-content-center">
     <img src="{{ asset('images/pet.jpeg') }}" width="800" alt="nnn">
@@ -13,11 +13,11 @@
 <div class="container mt-5 mb-5">
     <ul class="list-group">
         <li class="list-group-item d-flex"><strong>Type : </strong> <p class="ml-2">Chien</p></li> 
-        <li class="list-group-item d-flex"><strong>Race :</strong> <p class="ml-2">Pitbull</p></li> 
-        <li class="list-group-item d-flex"><strong>Sexe :</strong> <p class="ml-2">Mâle</p></li> 
-        <li class="list-group-item d-flex"><strong>Age :</strong> <p class="ml-2">5ans</p></li> 
-        <li class="list-group-item d-flex"><strong>Descriptif:</strong> <p class="ml-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim culpa iure ullam minus aliquid qui doloribus incidunt itaque exercitationem expedita, velit provident totam eligendi aperiam necessitatibus delectus quam! Eos, voluptas?</p></li>
-        <li class="list-group-item d-flex"><strong>Entente :</strong> <p class="ml-2"> Avec tous les animaux</p></li> 
+        <li class="list-group-item d-flex"><strong>Race :</strong> <p class="ml-2">{{ article.race}}</p></li> 
+        <li class="list-group-item d-flex"><strong>Sexe :</strong> <p class="ml-2">{{ article.sexe}}</p></li> 
+        <li class="list-group-item d-flex"><strong>Age :</strong> <p class="ml-2">{{ article.age}}ans</p></li> 
+        <li class="list-group-item d-flex"><strong>Grand descriptif:</strong> <p class="ml-2">{{ article.granddescriptif | raw}}</p></li>
+        <li class="list-group-item d-flex"><strong>Entente :</strong> <p class="ml-2"> {{ article.entente}}</p></li> 
         <li class="list-group-item d-flex"><strong>Numéro :</strong> <p class="ml-2">0909080909</p></li> 
         <li class="list-group-item d-flex"><strong>Adresse :</strong> <p class="ml-2">12 rue des pommes de terres</p></li> 
 
