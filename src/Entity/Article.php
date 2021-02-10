@@ -31,7 +31,7 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=3)
+     * @Assert\Length(min=3, minMessage="votre message est trop court")
      */
     private $sexe;
 
@@ -43,19 +43,19 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=10, max=255)
+     * @Assert\Length(min=10, max=255, minMessage="votre message est trop court")
      */
     private $descriptif;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=20, max=255)
+     * @Assert\Length(min=20, max=255, minMessage="votre message est trop court")
      */
     private $grand_descriptif;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=3, max=255)
+     * @Assert\Length(min=3, max=255, minMessage="votre message est trop court")
      */
     private $Entente;
 
