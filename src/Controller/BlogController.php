@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Image;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -58,7 +59,7 @@ class BlogController extends AbstractController
                  }      
         
 
-                 // si on utilise pas la cli on peut le faire a la main sinon 
+        // si on utilise pas la cli on peut le faire a la main sinon 
         // $form = $this->createFormBuilder($article)
         //                 ->add('prenom')
         //                 ->add('race')
@@ -76,19 +77,40 @@ class BlogController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            if(!$article->getId()){
-                $article->setcreatedAt(new \DateTime());
+            if ($form->isSubmitted() && $form->isValid()) {
+                
+                // On récupère les images transmises
+                $images = $form->get('image')->getData();
+            
+                // On boucle sur les images
+                foreach($images as $image){
+                // On génère un nouveau nom de fichier
+                $fichier = md5(uniqid()).'.'.$image->guessExtension();
+                
+                // On copie le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                
+                // On crée l'image dans la base de données
+                $img = new Image();
+                $img->setName($fichier);
+                $article->addImage($img);
+            }
+                
+                //si article n'existe pas (date à jour)
+                if(!$article->getId()){
+                    $article->setcreatedAt(new \DateTime());
+                }
+
+                    $manager->persist($article);
+                    $manager->flush();
+
+                    return $this->redirectToRoute('blog_show', ['id' => $article->getId()]);
             }
 
-
-            $manager->persist($article);
-            $manager->flush();
-
-            return $this->redirectToRoute('blog_show', ['id' => $article->getId()]);
-        }
-
-        return $this->render('blog/createAnnonce.html.twig', [
+         return $this->render('blog/createAnnonce.html.twig', [
             'title' => 'Créer une annonce',
             'formArticle' => $form->createView(),
             'editMode' => $article->getId() !== null

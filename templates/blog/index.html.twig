@@ -52,8 +52,11 @@
     {% for article in articles %}
         <div class="col mb-4">
         <div class="card">
-            <img src="images/cat.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
+          {% for image in article.images %}
+          <img src="{{ asset('/uploads/' ~ image.name) }}" class="card-img-top" alt="...">
+          {% endfor%}
+
+          <div class="card-body">
             <h5 class="card-title">{{ article.prenom }}</h5>
             <p class="card-text">{{ article.descriptif | raw }}</p>
             <p> l'annonce a été mis en ligne le : {{ article.createdAt | date('d/n/Y') }}</p>
