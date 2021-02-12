@@ -71,6 +71,12 @@ class Article
      */
     private $images;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="articles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -206,4 +212,18 @@ class Article
 
         return $this;
     }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+
 }
