@@ -16,7 +16,8 @@
 
 <div class="container mt-5 mb-5">
     <ul class="list-group">
-        <li class="list-group-item d-flex"><strong>Type : </strong> <p class="ml-2">Chien</p></li> 
+        
+        <li class="list-group-item d-flex"><strong>Type : </strong> <p class="ml-2">{{ article.categorie.titre }}</p></li> 
         <li class="list-group-item d-flex"><strong>Race :</strong> <p class="ml-2">{{ article.race}}</p></li> 
         <li class="list-group-item d-flex"><strong>Sexe :</strong> <p class="ml-2">{{ article.sexe}}</p></li> 
         <li class="list-group-item d-flex"><strong>Age :</strong> <p class="ml-2">{{ article.age}}ans</p></li> 
@@ -25,7 +26,6 @@
         <li class="list-group-item d-flex"><strong>Numéro :</strong> <p class="ml-2">0909080909</p></li> 
         <li class="list-group-item d-flex"><strong>Adresse :</strong> <p class="ml-2">12 rue des pommes de terres</p></li> 
       </ul>
-
       {% for image in article.images %}
       <a href="{{ path('blog_edit', {'id': article.id}) }}" class="btn btn-primary mt-4">Modifier l'annonce</a>
       {% endfor%}

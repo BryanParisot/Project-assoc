@@ -12,6 +12,7 @@
 
     <div class="container">
         {{ form_row(formArticle.prenom, {'attr': {'placeholder': "Entrer le prenom de l'animal *"}}) }}
+        {{ form_row(formArticle.categorie) }}
         {{ form_row(formArticle.race, {'attr': {'placeholder': "Entrer la race de l'animal *"}}) }}
         {{ form_row(formArticle.sexe, {'attr': {'placeholder': "Entrer le sexe de l'animal ( male ou femelle ) *"}}) }}
         {{ form_row(formArticle.age, {'attr': {'placeholder': "Entrer l'age de l'animal en chiffre seulement *"}}) }}
