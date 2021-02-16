@@ -86,7 +86,7 @@ class User implements UserInterface
 
     // /!\ j'ai du mettre getUsername à la place de getNom sinon ça ne fonctionne pas avec Userinterface
 
-    public function getUsername(): ?string
+    public function getNom(): ?string
     {
         return $this->nom;
     }
@@ -210,4 +210,8 @@ class User implements UserInterface
     }
 
 
+    public function getUsername()
+    {
+        
+    }
 }
