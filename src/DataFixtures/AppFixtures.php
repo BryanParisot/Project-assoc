@@ -6,32 +6,36 @@ use App\Entity\Article;
 use App\Entity\Categorie;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Proxies\__CG__\App\Entity\Categorie as EntityCategorie;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        for ($i=0; $i <10; $i++) { 
-            $article= new Article();
+        for ($i = 0; $i < 10; $i++) {
+            $article = new Article();
             $article->setPrenom("Orus n°$i")
-                    ->setRace("Staff n°$i")
-                    ->setSexe("mâle n°$i")
-                    ->setAge("2")
-                    ->setDescriptif("<p> voici un grand chien qui est très vif,voici un grand chien qui est très vif n°$i</p>")
-                    ->setGrandDescriptif("<p>voici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vif n°$i</p>")
-                    ->setEntente("Avec tous les animaux n°$i")
-                    ->setCreatedAt(new \DateTime());
+                ->setRace("Staff n°$i")
+                ->setSexe("mâle n°$i")
+                ->setAge("2")
+                ->setDescriptif("<p> voici un grand chien qui est très vif,voici un grand chien qui est très vif n°$i</p>")
+                ->setGrandDescriptif("<p>voici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vifvoici un grand chien qui est très vif n°$i</p>")
+                ->setEntente("Avec tous les animaux n°$i")
+                ->setCreatedAt(new \DateTime());
 
-                    $manager->persist($article);
-
+            $manager->persist($article);
         }
         // catégorie
-        for ($i=0; $i < 1 ; $i++) { 
-            $categorie = new Categorie();
+        for ($i = 0; $i < 1; $i++) {
+            $categorie = new EntityCategorie();
             $categorie->setTitre('Chien');
 
             $manager->persist($categorie);
         }
+
+
+
+
 
         $manager->flush();
     }

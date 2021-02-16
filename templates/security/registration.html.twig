@@ -1,0 +1,37 @@
+{% extends 'base.html.twig'%}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+<div class="picture">
+    <h1>{{ title }}</h1>
+</div>
+
+<div class="container"> 
+    <p class="mb-4"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum dolorem eveniet reprehenderit omnis ratione, sint excepturi nostrum provident quae cumque dignissimos corporis eaque magni sapiente ducimus numquam dolore neque delectus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo nihil in consectetur itaque illo quaerat nesciunt ex culpa? Perspiciatis odio nobis architecto eveniet natus vitae dolorum reprehenderit at corporis veniam.</p></div>
+
+    <!--Début du formulaire-->
+    {{ form_start(form) }}
+
+
+<div class="container">
+
+    {{ form_row(form.nom, {'label': 'Nom de la présidente de l\'association','attr': {'placeholder':'Entrer le nom ici *'}}) }}
+    {{ form_row(form.prenom, {'label': 'Prenom de la présidente de l\'association','attr': {'placeholder':'Entrer le prenom ici *'}}) }}
+    {{ form_row(form.nomAssociation) }}
+    {{ form_row(form.ville, {'attr': {'placeholder': "Entrer la ville ou se situe l'association *"}}) }}
+    {{ form_row(form.adresse, {'attr': {'placeholder': "Entrer l'adresse ou se situe l'association *"}}) }}
+    {{ form_row(form.numeroTelephone, {'attr': {'placeholder': "Entrer le numéro de l'association *"}}) }}
+    {{ form_row(form.numeroRna, {'attr': {'placeholder': "Entrer juste les numéro pas la lettre *"}}) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form.confirm_password) }}
+
+    <button class="btn btn-success mt-4 mb-4" type="submit">Inscription</button>
+
+</div>
+
+
+    <!--Fin du formulaire-->
+    {{ form_end(form) }}
+{% endblock%}

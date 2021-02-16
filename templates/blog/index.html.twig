@@ -49,11 +49,11 @@
 <div class="container">
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
-    {% for article in articles %}
+  {% for article in articles %}
         <div class="col mb-4">
         <div class="card">
           {% for image in article.images %}
-          <img src="{{ asset('/uploads/' ~ image.name) }}" class="card-img-top" alt="...">
+          <img src="{{ asset('/uploads/' ~ image.name) }}" class="card-img-top" alt="..." height="270" width="370" ">
           {% endfor%}
 
           <div class="card-body">
