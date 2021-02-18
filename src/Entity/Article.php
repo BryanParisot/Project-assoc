@@ -78,6 +78,11 @@ class Article
      */
     private $categorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="uzer")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -222,6 +227,18 @@ class Article
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

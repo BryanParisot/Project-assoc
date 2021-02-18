@@ -10,8 +10,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Notifier\Message\NullMessage;
 use Symfony\Component\Notifier\Texter;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -115,7 +117,8 @@ class BlogController extends AbstractController
         return $this->render('blog/createAnnonce.html.twig', [
             'title' => 'Créer une annonce',
             'formArticle' => $form->createView(),
-            'editMode' => $article->getId() !== null
+            'editMode' => $article->getId() !== null,
+            'article' => $article
         ]);
     }
 
@@ -132,5 +135,48 @@ class BlogController extends AbstractController
             'title' => 'annonce',
             'article' => $article
         ]);
+    }
+
+
+    /**
+     * @Route ("/blog/{id}/delete", name="delete_article")
+     */
+    // public function delete(Article $article)
+    // {
+        // $image = $this->getDoctrine()->getRepository(Image::class)->findByArticle($article->getId());
+        // $em = $this->getDoctrine()->getManager();
+        // $em->remove($article);
+        // $em->flush();
+        // var_dump($image[0]->getName());
+
+        // return $this->redirectToRoute("home");
+    // }
+
+
+    /**
+     * @Route("/supprime/image/{id}", name="delete_image", methods={"DELETE"})
+     */
+    public function deleteImage(Image $image, Request $request)
+    {
+         $data = json_decode($request->getContent(), true);
+         
+         if ($this->isCsrfTokenValid('delete'.$image->getId(), $data['_token'])) {
+           // on va chercher le nom de l'image
+            $nom = $image->getName();
+
+            //on supprime le ficher
+            unlink($this->getParameter('images_directory').'/'.$nom);
+
+            //on supprime de la base
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($image);
+            $em->flush();
+
+            //on répond en json
+            return new JsonResponse(['success' => 1]);
+
+         }else{
+             return new JsonResponse(['error' => 'Token Invalid'], 400);
+         }
     }
 }

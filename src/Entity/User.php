@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -78,6 +80,16 @@ class User implements UserInterface
      * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas le même mot de passe")
      */
     public $confirm_password;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="user")
+     */
+    private $uzer;
+
+    public function __construct()
+    {
+        $this->uzer = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -213,5 +225,35 @@ class User implements UserInterface
     public function getUsername()
     {
         
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getUzer(): Collection
+    {
+        return $this->uzer;
+    }
+
+    public function addUzer(Article $uzer): self
+    {
+        if (!$this->uzer->contains($uzer)) {
+            $this->uzer[] = $uzer;
+            $uzer->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUzer(Article $uzer): self
+    {
+        if ($this->uzer->removeElement($uzer)) {
+            // set the owning side to null (unless already changed)
+            if ($uzer->getUser() === $this) {
+                $uzer->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

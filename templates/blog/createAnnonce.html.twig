@@ -22,6 +22,23 @@
         {{ form_row(formArticle.Entente, {'attr': {'placeholder': "Entrer ici si l'animal s'entend avec des animaux si oui lesquels, ou non *"}}) }}
         {{ form_row(formArticle.image, {'attr': {'placeholder': "Inserer une image de l'animal en question *"}}) }}
 
+
+        <!-- si on modifie on affiche les images qu'il y a dedans en bas de la page -->
+        {% if editMode %}
+        <h3>Images</h3>
+        <div>       
+             {% for image in article.images %}
+        <img src="{{ asset('/uploads/' ~ image.name) }}" width="200" alt="nnn">
+        <a href="{{ path('delete_image', {'id': image.id}) }}" 
+        data-delete data-token="{{ csrf_token('delete' ~ image.id ) }}">Supprimer</a>
+
+       
+            {% endfor%}
+        </div>
+             {% else %}
+
+        {% endif %}
+
         <button class="btn btn-primary mb-4 mt-4" type="submit">
             {% if editMode %}
                 Enregister les modification
@@ -30,11 +47,17 @@
                 Ajouter l'article
 
             {% endif %}
-                </button>
+        </button>
+        
     </div>
 
+    <!--Fin du formulaire-->
+    {{ form_end(formArticle)}}
+    
+    
+    {% block javascript %}
+        <script src="{{ asset('js/images.js') }}"></script>
+    {% endblock %}
 
-<!--Fin du formulaire-->
-{{ form_end(formArticle)}}
 
-{% endblock %}
+{% endblock %}    
