@@ -45,10 +45,14 @@ class BlogController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home()
+    public function home(ArticleRepository $repo)
     {
+        $articles = $repo->findAll();
+
         return $this->render('blog/home.html.twig', [
-            'title' => 'Accueil'
+            'title' => 'Accueil',
+            'articles' => $articles
+
         ]);
     }
 
@@ -67,20 +71,6 @@ class BlogController extends AbstractController
             $article = new Article(); // article vide
 
         }
-
-
-        // si on utilise pas la cli on peut le faire a la main sinon 
-        // $form = $this->createFormBuilder($article)
-        //                 ->add('prenom')
-        //                 ->add('race')
-        //                 ->add('sexe')
-        //                 ->add('Age')
-        //                 ->add('descriptif' ,TextareaType::class)
-        //                 ->add('grand_descriptif')
-        //                 ->add('entente')
-
-        //                 ->getForm();
-
 
         //direction -> form articletype
         $form = $this->createForm(ArticleType::class, $article);

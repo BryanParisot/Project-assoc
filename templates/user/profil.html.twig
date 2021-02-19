@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="picture">
+  <h1>{{ title }}</h1>
+</div>
+
+<div class="container mt-5 mb-5">
+    <ul class="list-group">
+        
+        <li class="list-group-item d-flex"><strong>Prenom : </strong> <p class="ml-2">{{ app.user.prenom }}</p></li> 
+        <li class="list-group-item d-flex"><strong>Nom : </strong> <p class="ml-2">{{ app.user.nom }}</p></li> 
+        <li class="list-group-item d-flex"><strong>Association : </strong> <p class="ml-2">{{ app.user.nomAssociation }}</p></li> 
+        <li class="list-group-item d-flex"><strong>Ville : </strong> <p class="ml-2">{{ app.user.ville }}</p></li> 
+        <li class="list-group-item d-flex"><strong>Adresse : </strong> <p class="ml-2">{{ app.user.adresse }}</p></li> 
+        <li class="list-group-item d-flex"><strong>Numéro de téléphone : </strong> <p class="ml-2">{{ app.user.numeroTelephone }}</p></li> 
+        <li class="list-group-item d-flex"><strong>Adresse email : </strong> <p class="ml-2">{{ app.user.email }}</p></li> 
+        <li class="list-group-item d-flex"><strong>Numéro de RNA : </strong> <p class="ml-2">{{ app.user.numeroRna }}</p></li> 
+   
+    </ul>
+</div>
+<div class="container d-flex justify-content-center">
+  <a class="btn btn-primary mb-4 mr-4" href="{{ path('user_edit') }}">Modifier le profil</a>
+  <a class="btn btn-primary mb-4" href="#">Modifier le mot de passe</a>
+
+</div>
+
+<div class="container mb-4">
+  
+  <h2 class="mb-4">Retrouvez vos annonces ci dessous : {{app.user.articles | length}}</h2>
+  {% for article in articles %}
+    {% include '_partials/article.html.twig' %}
+  {% endfor%}
+
+</div>
+
+
+{% endblock %}

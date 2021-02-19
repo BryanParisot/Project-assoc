@@ -16,8 +16,10 @@
 <!-- button vers annonces -->
 
 <div class="block_animals">
-    <h2>Retrouvez toutes les annonces des animaux à adpter ici</h2>
-    <a class="btn btn-primary" href="{{ path('blog') }}">Annonces</a>
+    <h2 class="text-center">Retrouvez toutes les annonces des animaux à adopter, ici actuellement {{ articles | length}} annonces se trouve sur notre site</h2>
+    
+
+    <a class="btn btn-primary" href="{{ path('blog') }}">Découvrer les animaux</a>
     
 </div>
 
