@@ -27,7 +27,15 @@
     {{ form_row(form.password) }}
     {{ form_row(form.confirm_password) }}
 
-    <button class="btn btn-success mt-4 mb-4" type="submit">Inscription</button>
+        <button class="btn btn-primary mb-4 mt-4" type="submit">
+            {% if editMode %}
+                Enregister les modification
+
+            {% else %}
+                Inscription 
+
+            {% endif %}
+        </button>
 
 </div>
 

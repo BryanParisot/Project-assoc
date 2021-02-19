@@ -84,11 +84,11 @@ class User implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="user")
      */
-    private $uzer;
+    private $articles;
 
     public function __construct()
     {
-        $this->uzer = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -230,30 +230,31 @@ class User implements UserInterface
     /**
      * @return Collection|Article[]
      */
-    public function getUzer(): Collection
+    public function getArticles(): Collection
     {
-        return $this->uzer;
+        return $this->articles;
     }
 
-    public function addUzer(Article $uzer): self
+    public function addarticle(Article $article): self
     {
-        if (!$this->uzer->contains($uzer)) {
-            $this->uzer[] = $uzer;
-            $uzer->setUser($this);
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeUzer(Article $uzer): self
+    public function removearticle(Article $article): self
     {
-        if ($this->uzer->removeElement($uzer)) {
+        if ($this->articles->removeElement($article)) {
             // set the owning side to null (unless already changed)
-            if ($uzer->getUser() === $this) {
-                $uzer->setUser(null);
+            if ($article->getUser() === $this) {
+                $article->setUser(null);
             }
         }
 
         return $this;
     }
+
 }

@@ -24,21 +24,16 @@
 
 
         <!-- si on modifie on affiche les images qu'il y a dedans en bas de la page -->
-        {% if editMode %}
         <h3>Images</h3>
         <div>       
              {% for image in article.images %}
         <img src="{{ asset('/uploads/' ~ image.name) }}" width="200" alt="nnn">
         <a href="{{ path('delete_image', {'id': image.id}) }}" 
         data-delete data-token="{{ csrf_token('delete' ~ image.id ) }}">Supprimer</a>
-
-       
             {% endfor%}
         </div>
-             {% else %}
 
-        {% endif %}
-
+        <!-- button qui permet d'enregister ou ajouter -->
         <button class="btn btn-primary mb-4 mt-4" type="submit">
             {% if editMode %}
                 Enregister les modification

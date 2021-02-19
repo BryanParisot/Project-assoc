@@ -79,7 +79,7 @@ class Article
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="uzer")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="articles")
      */
     private $user;
 

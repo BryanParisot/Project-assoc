@@ -25,15 +25,16 @@
         <li class="list-group-item d-flex"><strong>Entente :</strong> <p class="ml-2"> {{ article.entente}}</p></li> 
         <li class="list-group-item d-flex"><strong>Ville :</strong> <p class="ml-2">paris</p></li> 
         <li class="list-group-item d-flex"><strong>Adresse :</strong> <p class="ml-2">12 rue des pommes de terres</p></li> 
-        <li class="list-group-item d-flex"><strong>Numéro :</strong> <p class="ml-2">0909080909</p></li> 
+        <li class="list-group-item d-flex"><strong>Numéro :</strong> <p class="ml-2"></p></li> 
     </ul>
     
 </div>
+
+
 {% for image in article.images %}
 <a href="{{ path('blog_edit', {'id': article.id}) }}" class="btn btn-primary mt-4">Modifier l'annonce</a>
 {% endfor%}
     
-    
-    
+  
 
 {% endblock%}

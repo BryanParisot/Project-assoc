@@ -7,6 +7,7 @@
     <h1>{{ title }}</h1>
 </div>
 
+<!-- recherche type -->
 <div class="d-flex justify-content-center mb-4">
 <div class="btn-group">
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,6 +47,7 @@
   </div>
 </div>
 
+<!-- Annonces -->
 <div class="container">
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -65,11 +67,18 @@
         </div>
         </div>
     {% endfor%}
-
   </div>
 </div>
+<div class="container d-flex justify-content-center">
+{{ knp_pagination_render(articles) }}
+</div>
 
-<nav aria-label="Page navigation example" class="text-center">
+
+
+
+
+<!-- Pagination -->
+<!-- <nav aria-label="Page navigation example" class="text-center">
     <ul class="pagination d-flex justify-content-center">
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">
@@ -85,7 +94,7 @@
         </a>
       </li>
     </ul>
-  </nav>
+  </nav> -->
 
 
 

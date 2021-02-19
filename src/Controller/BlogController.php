@@ -8,6 +8,7 @@ use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -25,9 +26,14 @@ class BlogController extends AbstractController
     /**
      * @Route("/blog", name="blog")
      */
-    public function index(ArticleRepository $repo): Response
+    public function index(Request $request, ArticleRepository $repo, PaginatorInterface $paginator): Response
     {
-        $articles = $repo->findAll();
+        $donnees = $repo->findAll();
+        $articles = $paginator->paginate(
+            $donnees, //on passe les données
+            $request->query->getInt('page', 1), // numéro de la page en cour, 1 par default
+            3
+        );
 
         return $this->render('blog/index.html.twig', [
             'controller_name' => 'BlogController',
@@ -141,16 +147,16 @@ class BlogController extends AbstractController
     /**
      * @Route ("/blog/{id}/delete", name="delete_article")
      */
-    // public function delete(Article $article)
-    // {
+    public function delete(Article $article)
+    {
         // $image = $this->getDoctrine()->getRepository(Image::class)->findByArticle($article->getId());
-        // $em = $this->getDoctrine()->getManager();
-        // $em->remove($article);
-        // $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($article);
+        $em->flush();
         // var_dump($image[0]->getName());
 
-        // return $this->redirectToRoute("home");
-    // }
+        return $this->redirectToRoute("home");
+    }
 
 
     /**
