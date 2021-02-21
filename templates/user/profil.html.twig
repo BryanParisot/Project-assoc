@@ -6,6 +6,13 @@
 </div>
 
 <div class="container mt-5 mb-5">
+
+  {% for message in app.flashes('message') %}
+  <div class="alert alert-success" role="alert">
+    {{message}}
+  </div>
+  {% endfor %}
+
     <ul class="list-group">
         
         <li class="list-group-item d-flex"><strong>Prenom : </strong> <p class="ml-2">{{ app.user.prenom }}</p></li> 
@@ -21,7 +28,7 @@
 </div>
 <div class="container d-flex justify-content-center">
   <a class="btn btn-primary mb-4 mr-4" href="{{ path('user_edit') }}">Modifier le profil</a>
-  <a class="btn btn-primary mb-4" href="#">Modifier le mot de passe</a>
+  <a class="btn btn-primary mb-4" href="{{ path('user_edit_password') }}">Modifier le mot de passe</a>
 
 </div>
 
