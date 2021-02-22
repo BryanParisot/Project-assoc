@@ -17,7 +17,7 @@ class UserController extends AbstractController
     /**
      * @Route("/user", name="user")
      */
-    public function index(): Response
+    public function index(UserRepository $repo): Response
     {
         $articles = $this->getUser()->getArticles();
 

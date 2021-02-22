@@ -133,22 +133,6 @@ class BlogController extends AbstractController
         ]);
     }
 
-
-    /**
-     * @Route ("/blog/{id}/delete", name="delete_article")
-     */
-    public function delete(Article $article)
-    {
-        // $image = $this->getDoctrine()->getRepository(Image::class)->findByArticle($article->getId());
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($article);
-        $em->flush();
-        // var_dump($image[0]->getName());
-
-        return $this->redirectToRoute("home");
-    }
-
-
     /**
      * @Route("/supprime/image/{id}", name="delete_image", methods={"DELETE"})
      */
@@ -175,4 +159,19 @@ class BlogController extends AbstractController
              return new JsonResponse(['error' => 'Token Invalid'], 400);
          }
     }
+
+    /**
+     * @Route ("/blog/{id}/delete", name="delete_article")
+     */
+    public function delete(Article $article, Image $image, Request $request)
+    {
+        // $image = $this->getDoctrine()->getRepository(Image::class)->findByArticle($article->getId());
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($article);
+        $em->flush();
+        // var_dump($image[0]->getName());
+
+        return $this->redirectToRoute("home");
+    }
+
 }
