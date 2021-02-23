@@ -86,6 +86,11 @@ class User implements UserInterface
      */
     private $articles;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $roles;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -253,6 +258,13 @@ class User implements UserInterface
                 $article->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function setRoles(?string $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }

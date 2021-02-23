@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="picture">
+    <h1>{{ title }}</h1>
+</div>
+<div class="container d-flex justify-content-center">
+
+    <a class="btn btn-primary mb-4" href="{{ path('admin_categorie_ajout') }}">Ajouter des catégories</a>
+</div>
+
+<table class="table container">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Categorie</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      {% for categorie in categories %}
+    <tr>
+      <td>{{ categorie.id }}</td>
+      <td>{{ categorie.titre }}</td>
+      <td>    <a class="btn btn-primary mb-4" href="{{ path('admin_categorie_modifier', {id: categorie.id}) }}">Modifier</a>
+      </td>
+
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
