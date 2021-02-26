@@ -13,12 +13,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoriesAdminController extends AbstractController
 {
     
+    //afficher les Catégories
     /**
      * @Route("/categories", name="admin_categories")
      */
     public function categories(CategorieRepository $catsRepo): Response
     {
-        return $this->render('admin/categories.html.twig', [
+        return $this->render('admin/categories/categories.html.twig', [
             'title' => 'page catagories',
             'categories' => $catsRepo->findAll(),
             'controller_name' => 'CategoriesAdminController',
@@ -43,7 +44,7 @@ class CategoriesAdminController extends AbstractController
 
             return $this->redirectToRoute('admin_categories');
         }
-        return $this->render('admin/adminCategorie.html.twig', [
+        return $this->render('admin/categories/adminCategorie.html.twig', [
             'form' => $form->createView(),
             'title' => 'ajouter des catégories'
 
@@ -68,7 +69,7 @@ class CategoriesAdminController extends AbstractController
 
             return $this->redirectToRoute('admin_categories');
         }
-        return $this->render('admin/adminCategorie.html.twig', [
+        return $this->render('admin/categories/adminCategorie.html.twig', [
             'form' => $form->createView(),
             'title' => 'ajouter des catégories'
 

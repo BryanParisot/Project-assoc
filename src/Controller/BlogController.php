@@ -106,6 +106,9 @@ class BlogController extends AbstractController
 
             $manager->persist($article);
             $manager->flush();
+            $this->addFlash('message', 'Annonces crée avc succès');
+
+            
 
             return $this->redirectToRoute('blog_show', ['id' => $article->getId()]);
         }

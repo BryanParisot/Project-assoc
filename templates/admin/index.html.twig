@@ -7,8 +7,10 @@
     <h1>{{ title }}</h1>
 </div>
 
-<div class="container">
+<div class="container d-flex justify-content-between">
     <a class="btn btn-primary" href="{{ path('admin_categories') }}">Catégories</a>
+    <a class="btn btn-primary" href="{{ path('admin_annonces') }}">Annonces</a>
+
 </div>
 
 {% endblock %}

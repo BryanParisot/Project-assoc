@@ -7,6 +7,12 @@
 
 
 <div class="container">
+    {% for message in app.flashes('message') %}
+    <div class="alert alert-success" role="alert">
+      {{message}}
+    </div>
+    {% endfor %}
+  
     <form action="{{ path('security_login') }}" method="POST">
         <div class="form-group">
             <input placeholder="adresse email..." type="text" required name="_username" class="form-control mb-4" />

@@ -28,6 +28,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    //modifier la page profil
 
     /**
      * @Route("/inscription/edit", name="user_edit")
@@ -45,6 +46,7 @@ class UserController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
 
             $this->addFlash('message', 'Profil mis à jour');
             return $this->redirectToRoute('user');

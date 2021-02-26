@@ -34,6 +34,10 @@ class SecurityController extends AbstractController
             
             $manager->persist($user);
             $manager->flush();
+            $this->addFlash('message', 'Profil crée avec succès');
+
+            return $this->redirectToRoute('security_login');
+
         }
         
 
