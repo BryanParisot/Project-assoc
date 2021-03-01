@@ -1,43 +1,37 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\admin;
 
 use App\Entity\User;
 use App\Form\EditProfilType;
-use App\Repository\ArticleRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class UserController extends AbstractController
+class UsersAdminController extends AbstractController
 {
+    
     /**
-     * @Route("/user", name="user")
+     * @Route("/admin/users", name="admin_users_admin")
      */
-    public function index(UserRepository $repo): Response
+    public function categories(UserRepository $repoArticle): Response
     {
-        $articles = $this->getUser()->getArticles();
-
-        return $this->render('user/profil.html.twig', [
-            'controller_name' => 'UserController',
-            'title' => 'profil',
-            'articles'=> $articles
+        return $this->render('admin/users/users.html.twig', [
+            'title' => 'page utilisateurs',
+            'users' => $repoArticle->findAll(),
+            'controller_name' => 'UsersAdminController',
         ]);
     }
 
-    //modifier la page profil
-
     /**
-     * @Route("/inscription/edit", name="user_edit")
+     * @Route("/admin/users/modifier/{id}", name="admin_users_modifier")
      */
-    public function editProfile(Request $request){
+    public function modifierAnnonce(User $user, Request $request){
 
-        $user = $this->getUser();
-
-        //Je vais récupérer un formulaire user sans les input mdp
         $form = $this->createForm(EditProfilType::class, $user);
 
         $form->handleRequest($request);
@@ -47,23 +41,17 @@ class UserController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-
-            $this->addFlash('message', 'Profil mis à jour');
-            return $this->redirectToRoute('user');
+            return $this->redirectToRoute('admin_users_admin');
         }
-
-        return $this->render('security/profilEdit.html.twig', [
+        return $this->render('admin/users/modifierUser.html.twig', [
             'form' => $form->createView(),
-            'title' => 'Modifier votre profil',
+            'title' => 'modification d\'utilisateurs'
 
         ]);
-
     }
 
-    //page pour modifier son mot de passe 
-
     /**
-     * @Route("/inscription/edit/password", name="user_edit_password")
+     * @Route("/inscription/edit/password/{id}", name="user_edit_password_admin")
      */
     public function editPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder){
 
@@ -81,7 +69,7 @@ class UserController extends AbstractController
             $em->flush();
             $this->addFlash('message', 'Mot de passe mis à jour avec succès');
 
-            return $this->redirectToRoute('user');
+            return $this->redirectToRoute('admin_users_admin');
             
         }else{
             $this->addFlash('error', 'les deux mots de passe ne sont pas identiques');

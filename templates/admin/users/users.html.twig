@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="picture">
+    <h1>{{ title }}</h1>
+</div>
+
+<table class="table container">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Association</th>
+      <th scope="col">Emaim</th>
+      <th scope="col">Numéro de téléphone</th>
+      <th scope="col">Numéro rna</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Action</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+      {% for user in users %}
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.prenom }}</td>
+      <td>{{ user.nom}}</td>
+      <td>{{ user.nomAssociation}}</td>
+      <td>{{ user.email}}</td>
+      <td>{{ user.numeroTelephone}}</td>
+      <td>{{ user.numeroRna}}</td>
+      <td>{{ user.ville}}</td>
+      <td>{{ user.adresse}}</td>
+      <td> <a class="btn btn-primary mb-4" href="{{ path('admin_users_modifier', {id: user.id}) }}">Profil</a>
+      <td> <a class="btn btn-primary mb-4" href="{{ path('user_edit_password_admin', {id: user.id}) }}">mdp</a>
+
+
+        
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

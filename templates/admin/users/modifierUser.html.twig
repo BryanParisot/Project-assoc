@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+
+{% block body %}
+<div class="picture">
+    <h1>{{ title }}</h1>
+</div>
+    <!--Début du formulaire-->
+    {{ form_start(form) }}
+
+
+<div class="container">
+
+    {{ form_row(form.nom, {'label': 'Nom de la présidente de l\'association','attr': {'placeholder':'Entrer le nom ici *'}}) }}
+    {{ form_row(form.prenom, {'label': 'Prenom de la présidente de l\'association','attr': {'placeholder':'Entrer le prenom ici *'}}) }}
+    {{ form_row(form.nomAssociation) }}
+    {{ form_row(form.ville, {'attr': {'placeholder': "Entrer la ville ou se situe l'association *"}}) }}
+    {{ form_row(form.adresse, {'attr': {'placeholder': "Entrer l'adresse ou se situe l'association *"}}) }}
+    {{ form_row(form.numeroTelephone, {'attr': {'placeholder': "Entrer le numéro de l'association *"}}) }}
+    {{ form_row(form.numeroRna, {'attr': {'placeholder': "Entrer juste les numéro pas la lettre *"}}) }}
+    {{ form_row(form.email) }}
+ <button class="btn btn-primary mb-4 mt-4" type="submit">  Enregister les modification </button>
+
+</div>
+
+
+    <!--Fin du formulaire-->
+    {{ form_end(form) }}
+
+
+
+{% endblock %}
