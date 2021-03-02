@@ -6,11 +6,19 @@
     <h1>{{ title }}</h1>
 </div>
 
+<div class="container">
+  {% for message in app.flashes('message') %}
+  <div class="alert alert-success" role="alert">
+    {{message}}
+  </div>
+  {% endfor %}
+</div>
+
+
 <table class="table container">
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Prenom</th>
       <th scope="col">Nom</th>
       <th scope="col">Association</th>
       <th scope="col">Emaim</th>
@@ -27,7 +35,6 @@
       {% for user in users %}
     <tr>
       <td>{{ user.id }}</td>
-      <td>{{ user.prenom }}</td>
       <td>{{ user.nom}}</td>
       <td>{{ user.nomAssociation}}</td>
       <td>{{ user.email}}</td>
@@ -37,6 +44,7 @@
       <td>{{ user.adresse}}</td>
       <td> <a class="btn btn-primary mb-4" href="{{ path('admin_users_modifier', {id: user.id}) }}">Profil</a>
       <td> <a class="btn btn-primary mb-4" href="{{ path('user_edit_password_admin', {id: user.id}) }}">mdp</a>
+      <td> <a class="btn btn-warning mb-4" href="{{ path('user_delete_admin', { id: user.id }) }}">X</a>
 
 
         

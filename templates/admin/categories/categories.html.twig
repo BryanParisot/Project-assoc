@@ -10,6 +10,15 @@
     <a class="btn btn-primary mb-4" href="{{ path('admin_categorie_ajout') }}">Ajouter des catégories</a>
 </div>
 
+<!-- Message de reussite -->
+<div class="container">
+  {% for message in app.flashes('message') %}
+  <div class="alert alert-success" role="alert">
+    {{message}}
+  </div>
+  {% endfor %}
+</div>
+
 <table class="table container">
   <thead>
     <tr>
@@ -24,10 +33,10 @@
     <tr>
       <td>{{ categorie.id }}</td>
       <td>{{ categorie.titre }}</td>
-      <td>    <a class="btn btn-primary mb-4" href="{{ path('admin_categorie_modifier', {id: categorie.id}) }}">Modifier</a>
+      <td>
+        <a class="btn btn-primary mb-4" href="{{ path('admin_categorie_modifier', {id: categorie.id}) }}">Modifier</a>
+        <a class="btn btn-warning mb-4" href="{{ path('delete_article_admin', { id: categorie.id }) }}">X</a>
       </td>
-
-
     </tr>
     {% endfor %}
   </tbody>

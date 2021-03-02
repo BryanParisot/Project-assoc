@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CategoriesAdminController extends AbstractController
 {
-    
+
     //afficher les Catégories
     /**
      * @Route("/categories", name="admin_categories")
@@ -75,5 +75,18 @@ class CategoriesAdminController extends AbstractController
 
         ]);
     }
+    /**
+     * @Route ("categories/modifier/{id}/delete", name="delete_article_admin")
+     */
+    public function delete(Categorie $categorie)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($categorie);
+        $em->flush();
+
+        $this->addFlash('message', 'Supprimé avec succès');
+        return $this->redirectToRoute("admin_categories");
+    }
+
 
 }

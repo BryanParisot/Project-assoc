@@ -2,6 +2,9 @@
   <li class="list-group-item d-flex mt-2 d-flex justify-content-between">
     <strong>Annonce : {{ article.prenom }}</strong>
     <p class="ml-2"></p>
+    <div>
     <a href="{{ path('blog_show', { id: article.id }) }}"class="btn btn-primary" >Voir l'animal</a>
+    <a href="{{ path('delete_article', { id: article.id }) }}"class="btn btn-warning" >x</a>
+</div>
   </li>
 </ul>

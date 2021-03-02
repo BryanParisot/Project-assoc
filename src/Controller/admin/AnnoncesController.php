@@ -3,11 +3,9 @@
 namespace App\Controller\admin;
 
 use App\Entity\Article;
-use App\Entity\Categorie;
+use App\Entity\Image;
 use App\Form\ArticleType;
-use App\Form\CategoryType;
 use App\Repository\ArticleRepository;
-use App\Repository\CategorieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,5 +52,20 @@ class AnnoncesController extends AbstractController
 
         ]);
     }
+
+    /**
+     * @Route ("/blog/{id}/delete", name="delete_article_admin")
+     */
+    public function delete(Article $article, Image $image)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($image);
+        $em->remove($article);
+        $em->flush();
+
+        $this->addFlash('message', 'Supprimé  avec succès');
+        return $this->redirectToRoute("admin_annonces");
+    }
+
 
 }

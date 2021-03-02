@@ -41,6 +41,7 @@ class UsersAdminController extends AbstractController
             $em->persist($user);
             $em->flush();
 
+            $this->addFlash('message', 'Profil modifier avec succès');
             return $this->redirectToRoute('admin_users_admin');
         }
         return $this->render('admin/users/modifierUser.html.twig', [
@@ -65,6 +66,7 @@ class UsersAdminController extends AbstractController
         //on vérifie si les 2 mots de passe sont identiques
         if ($request->request->get('pass') == $request->request->get('pass1')) {
 
+            //encodage du mot de pass
             $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('pass1')));
             $em->flush();
             $this->addFlash('message', 'Mot de passe mis à jour avec succès');
@@ -80,6 +82,19 @@ class UsersAdminController extends AbstractController
             'title' => 'Modifier votre mot de passe',
         ]);
     
+    }
+
+    /**
+     * @Route ("/admin/users/modifier/{id}/delete", name="user_delete_admin")
+     */
+    public function delete(User $user)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+
+        $this->addFlash('message', 'Supprimé  avec succès');
+        return $this->redirectToRoute("admin_users_admin");
     }
 
 }

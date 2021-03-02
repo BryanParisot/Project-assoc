@@ -101,8 +101,6 @@ class User implements UserInterface
         return $this->id;
     }
 
-    // /!\ j'ai du mettre getUsername à la place de getNom sinon ça ne fonctionne pas avec Userinterface
-
     public function getNom(): ?string
     {
         return $this->nom;
