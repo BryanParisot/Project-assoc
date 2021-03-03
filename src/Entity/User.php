@@ -18,6 +18,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *  fields = {"email"},
  *  message = "l'email que vous avez indiqué est déjà utilisé !"
  * )
+ * @UniqueEntity(
+ *  fields = {"numeroRna"},
+ *  message = "le numéro de Rna que vous avez indiqué est déjà utilisé !"
+ * )
  */
 class User implements UserInterface
 {
@@ -55,17 +59,34 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(
+     *      min = 9,
+     *      max = 9,
+     *      minMessage = "Votre numéro est trop court",
+     *      maxMessage = "Votre numéro est trop long"
+     * )
+
      */
     private $numeroTelephone;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(
+     *      min = 9,
+     *      max = 9,
+     *      minMessage = "Votre numéro RNA est trop court",
+     *      maxMessage = "Votre numéro RNA est trop long"
+     * )
      */
     private $numeroRna;
 
     /**
      * @ORM\Column(type="string", length=255)
      * Assert\email()
+     * Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/",
+     *     message="not_valid_email"
+     * )
      */
     private $email;
 
