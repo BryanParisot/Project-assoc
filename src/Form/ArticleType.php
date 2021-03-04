@@ -26,7 +26,7 @@ class ArticleType extends AbstractType
             ->add('grand_descriptif')
             ->add('Entente')
             ->add('image', FileType::class,[
-                'multiple' => true,
+                'multiple' => false,
                 'mapped' => false,
                 'required' => false
             ])
