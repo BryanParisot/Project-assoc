@@ -22,7 +22,7 @@ class CategoriesAdminController extends AbstractController
         return $this->render('admin/categories/categories.html.twig', [
             'title' => 'page catagories',
             'categories' => $catsRepo->findAll(),
-            'controller_name' => 'CategoriesAdminController',
+            'controller_name' => 'CategoriesAdminController'
         ]);
     }
 
