@@ -54,7 +54,7 @@ class AnnoncesController extends AbstractController
     }
 
     /**
-     * @Route ("/blog/{id}/delete", name="delete_article_admin")
+     * @Route ("/admin/{id}/delete", name="delete_article_admin")
      */
     public function delete(Article $article, Image $image)
     {

@@ -79,6 +79,8 @@ class BlogController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $article->setUser($this->getUser());
+
             // On récupère les images transmises
             $images = $form->get('image')->getData();
 

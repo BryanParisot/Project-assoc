@@ -76,7 +76,7 @@ class CategoriesAdminController extends AbstractController
         ]);
     }
     /**
-     * @Route ("categories/modifier/{id}/delete", name="delete_article_admin")
+     * @Route ("categories/modifier/{id}/delete", name="delete_categorie_admin")
      */
     public function delete(Categorie $categorie)
     {
