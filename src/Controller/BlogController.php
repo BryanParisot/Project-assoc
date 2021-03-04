@@ -32,7 +32,7 @@ class BlogController extends AbstractController
         $articles = $paginator->paginate(
             $donnees, //on passe les données
             $request->query->getInt('page', 1), // numéro de la page en cour, 1 par default
-            3
+            21
         );
 
         return $this->render('blog/index.html.twig', [

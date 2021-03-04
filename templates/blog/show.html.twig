@@ -28,7 +28,7 @@
         <li class="list-group-item d-flex"><strong>Race :</strong> <p class="ml-2">{{ article.race}}</p></li> 
         <li class="list-group-item d-flex"><strong>Sexe :</strong> <p class="ml-2">{{ article.sexe}}</p></li> 
         <li class="list-group-item d-flex"><strong>Age :</strong> <p class="ml-2">{{ article.age}}ans</p></li> 
-        <li class="list-group-item d-flex"><strong>Grand descriptif:</strong> <p class="ml-2">{{ article.granddescriptif | raw}}</p></li>
+        <li class="list-group-item d-flex"><strong>Descriptif:</strong> <p class="ml-2">{{ article.granddescriptif | raw}}</p></li>
         <li class="list-group-item d-flex"><strong>Entente :</strong> <p class="ml-2"> {{ article.entente}}</p></li> 
         <li class="list-group-item d-flex"><strong>Ville :</strong> <p class="ml-2">{{ article.user.ville}}
         </p></li> 
@@ -38,13 +38,6 @@
         </p></li> 
     </ul>
     
-</div>
-
-
-{% for image in article.images %}
-<a href="{{ path('blog_edit', {'id': article.id}) }}" class="btn btn-primary mt-4">Modifier l'annonce</a>
-{% endfor%}
-    
-  
+</div>  
 
 {% endblock%}

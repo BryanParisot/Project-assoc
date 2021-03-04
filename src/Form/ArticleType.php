@@ -23,7 +23,6 @@ class ArticleType extends AbstractType
             ->add('race')
             ->add('sexe')
             ->add('age')
-            ->add('descriptif')
             ->add('grand_descriptif')
             ->add('Entente')
             ->add('image', FileType::class,[

@@ -44,11 +44,6 @@ class Article
      */
     private $age;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=10, max=255, minMessage="votre message est trop court")
-     */
-    private $descriptif;
 
     /**
      * @ORM\Column(type="text")
@@ -137,18 +132,6 @@ class Article
     public function setAge(int $age): self
     {
         $this->age = $age;
-
-        return $this;
-    }
-
-    public function getDescriptif(): ?string
-    {
-        return $this->descriptif;
-    }
-
-    public function setDescriptif(string $descriptif): self
-    {
-        $this->descriptif = $descriptif;
 
         return $this;
     }

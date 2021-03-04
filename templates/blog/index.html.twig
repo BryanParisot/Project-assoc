@@ -60,7 +60,9 @@
 
           <div class="card-body">
             <h5 class="card-title">{{ article.prenom }}</h5>
-            <p class="card-text">{{ article.descriptif | raw }}</p>
+            
+            <!-- Permet d'afficher les 50 premier caractères du grand descriptif pour donne un avant gout -->
+            <p class="card-text">{{ article.grandDescriptif | raw |u.truncate(50, ' ...') }}</p>
             <p> l'annonce a été mis en ligne le : {{ article.createdAt | date('d/n/Y') }}</p>
             <a href="{{ path('blog_show', {'id': article.id}) }}" class="btn btn-primary">Voir l'animal</a>
             </div>
