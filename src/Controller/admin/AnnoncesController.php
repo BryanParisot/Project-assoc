@@ -56,10 +56,9 @@ class AnnoncesController extends AbstractController
     /**
      * @Route ("/admin/{id}/delete", name="delete_article_admin")
      */
-    public function delete(Article $article, Image $image)
+    public function delete(Article $article)
     {
         $em = $this->getDoctrine()->getManager();
-        $em->remove($image);
         $em->remove($article);
         $em->flush();
 

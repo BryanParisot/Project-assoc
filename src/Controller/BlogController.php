@@ -168,13 +168,12 @@ class BlogController extends AbstractController
     /**
      * @Route ("/blog/{id}/delete", name="delete_article")
      */
-    public function delete(Article $article, Image $image)
+    public function delete(Article $article)
     {
         $em = $this->getDoctrine()->getManager();
-        $em->remove($image);
         $em->remove($article);
         $em->flush();
-
+        
         return $this->redirectToRoute("home");
     }
 

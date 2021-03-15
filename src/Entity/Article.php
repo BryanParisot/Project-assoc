@@ -63,7 +63,7 @@ class Article
     private $createdAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="article",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="article",cascade={"persist"},orphanRemoval=true)
      */
     private $images;
 

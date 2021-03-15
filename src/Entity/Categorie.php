@@ -25,11 +25,6 @@ class Categorie
     private $titre;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $descirption;
-
-    /**
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="categorie")
      */
     private $articles;
@@ -52,18 +47,6 @@ class Categorie
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getDescirption(): ?string
-    {
-        return $this->descirption;
-    }
-
-    public function setDescirption(?string $descirption): self
-    {
-        $this->descirption = $descirption;
 
         return $this;
     }
