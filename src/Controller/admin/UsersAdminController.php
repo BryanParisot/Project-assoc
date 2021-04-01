@@ -4,6 +4,7 @@ namespace App\Controller\admin;
 
 use App\Entity\User;
 use App\Form\EditProfilType;
+use App\Form\EditUserRoleType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -41,7 +42,7 @@ class UsersAdminController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash('message', 'Profil modifier avec succès');
+            $this->addFlash('message', 'Profil modifié avec succès');
             return $this->redirectToRoute('admin_users_admin');
         }
         return $this->render('admin/users/modifierUser.html.twig', [
@@ -93,8 +94,37 @@ class UsersAdminController extends AbstractController
         $em->remove($user);
         $em->flush();
 
+        //message de succès
         $this->addFlash('message', 'Supprimé  avec succès');
         return $this->redirectToRoute("admin_users_admin");
     }
+
+    /**
+     * @Route("/admin/users/role/{id}", name="user_role_admin")
+     */
+    public function role(User $user, Request $request){
+
+        $form = $this->createForm(EditUserRoleType::class, $user );
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash('message', 'utilisateur modifié avec succès');
+            return $this->redirectToRoute('admin_users_admin');
+        }
+
+        return $this->render('admin/users/modifierRoles.html.twig',[
+            'title' => 'Gestion des roles',
+            'form' => $form->createView()
+
+        ]);
+
+
+    }
+
 
 }

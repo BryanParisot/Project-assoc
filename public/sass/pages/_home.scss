@@ -1,12 +1,13 @@
 .picture{
     height: 400px;
-    background-image: url('../../images/cat.jpeg');
+    background-image: url('../../images/renard.jpeg');
     @include backgroundPos;
     @include verticalCenter;
-    margin-bottom: 150px;
+    margin-bottom: 50px;
 
     h1{
         color:white;
+        text-shadow: 1px 1px 2px black;
     }
 }
 .block{
@@ -28,7 +29,9 @@
 
     h2{
         color: white;
+        text-shadow: 1px 1px 2px black;
         margin-bottom: 100px;
+
     }
 }
 
@@ -65,4 +68,9 @@
         height: 100%;
     }
 
+}
+.bas_footer{
+    width: 100%;
+    color: black;
+    background-color: rgb(182, 170, 170);
 }

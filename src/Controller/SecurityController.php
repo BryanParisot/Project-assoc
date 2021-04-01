@@ -56,6 +56,7 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig',[
             'title' => 'Connexion'
         ]);
+        return $this->redirectToRoute('blog');
     }
 
     /**

@@ -60,7 +60,7 @@ class BlogController extends AbstractController
 
 
     /**
-     * @Route("/blog/new", name="blog_annonce")
+     * @Route("/user/blog/new", name="blog_annonce")
      * @Route("/blog/{id}/edit", name="blog_edit")
      */
     public function createAnnonce(Article $article = null, Request $request, EntityManagerInterface $manager)

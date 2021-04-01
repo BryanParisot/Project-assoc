@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+
+{% block body %}
+<div class="picture">
+    <h1>{{ title }}</h1>
+</div>
+<div class="container text-center">
+    {{ form_start(form) }}
+        {{ form_end(form) }}
+</div>
+
+
+{% endblock %}
+

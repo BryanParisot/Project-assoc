@@ -107,10 +107,10 @@ class User implements UserInterface
      */
     private $articles;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+/**
+     * @ORM\Column(type="json")
      */
-    private $roles;
+    private $roles = [];
 
     public function __construct()
     {
@@ -239,10 +239,23 @@ class User implements UserInterface
     {
         
     }
-
-    public function getRoles()
+/**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        return['ROLE_USER'];
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_A';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 
 
@@ -281,11 +294,11 @@ class User implements UserInterface
         return $this;
     }
 
-    public function setRoles(?string $roles): self
-    {
-        $this->roles = $roles;
+    // public function setRoles(?string $roles): self
+    // {
+    //     $this->roles = $roles;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
 }

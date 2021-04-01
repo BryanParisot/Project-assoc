@@ -4,7 +4,7 @@ li {
 
 .picture {
   height: 400px;
-  background-image: url("../../images/cat.jpeg");
+  background-image: url("../../images/renard.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -17,11 +17,12 @@ li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 
 .picture h1 {
   color: white;
+  text-shadow: 1px 1px 2px black;
 }
 
 .block {
@@ -56,6 +57,7 @@ li {
 
 .block_animals h2 {
   color: white;
+  text-shadow: 1px 1px 2px black;
   margin-bottom: 100px;
 }
 
@@ -103,5 +105,11 @@ li {
 .footer .second_block {
   width: 50%;
   height: 100%;
+}
+
+.bas_footer {
+  width: 100%;
+  color: black;
+  background-color: #b6aaaa;
 }
 /*# sourceMappingURL=style.css.map */

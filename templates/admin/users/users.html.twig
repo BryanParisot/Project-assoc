@@ -21,11 +21,11 @@
       <th scope="col">Id</th>
       <th scope="col">Nom</th>
       <th scope="col">Association</th>
-      <th scope="col">Emaim</th>
+      <th scope="col">Email</th>
       <th scope="col">Numéro de téléphone</th>
       <th scope="col">Numéro rna</th>
       <th scope="col">Ville</th>
-      <th scope="col">Adresse</th>
+      <th scope="col">Roles</th>
       <th scope="col">Action</th>
 
 
@@ -41,7 +41,15 @@
       <td>{{ user.numeroTelephone}}</td>
       <td>{{ user.numeroRna}}</td>
       <td>{{ user.ville}}</td>
-      <td>{{ user.adresse}}</td>
+      <td>{% for role in user.roles %}
+        {% if role == "ROLE_USER"%}
+       <a href="{{ path('user_role_admin', {id: user.id}) }}">Utilisateur</a>  
+        {% elseif role == "ROLE_ADMIN" %}
+        <a href="{{ path('user_role_admin', {id: user.id}) }}">Administrateur</a>
+        {% elseif role == "ROLE_A" %}
+        <a href="{{ path('user_role_admin', {id: user.id}) }}">Attente</a>
+        {% endif %}
+      {% endfor %} </td>
       <td> <a class="btn btn-primary mb-4" href="{{ path('admin_users_modifier', {id: user.id}) }}">Profil</a>
       <td> <a class="btn btn-primary mb-4" href="{{ path('user_edit_password_admin', {id: user.id}) }}">mdp</a>
       <td> <a class="btn btn-warning mb-4" href="{{ path('user_delete_admin', { id: user.id }) }}">X</a>

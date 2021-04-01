@@ -16,7 +16,7 @@ class AnnoncesController extends AbstractController
     
     //afficher les Catégories
     /**
-     * @Route("/annonces", name="admin_annonces")
+     * @Route("/admin/annonces", name="admin_annonces")
      */
     public function categories(ArticleRepository $repoArticle): Response
     {

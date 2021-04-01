@@ -15,7 +15,7 @@ class CategoriesAdminController extends AbstractController
 
     //afficher les Catégories
     /**
-     * @Route("/categories", name="admin_categories")
+     * @Route("/admin/categories", name="admin_categories")
      */
     public function categories(CategorieRepository $catsRepo): Response
     {
