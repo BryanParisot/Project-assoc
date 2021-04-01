@@ -112,4 +112,13 @@ li {
   color: black;
   background-color: #b6aaaa;
 }
+
+#img {
+  border-radius: 20px;
+}
+
+#erreur {
+  color: red;
+  font-size: 25px;
+}
 /*# sourceMappingURL=style.css.map */

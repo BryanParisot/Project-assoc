@@ -4,12 +4,17 @@
 
 {% block body %}
 <div class="picture">
+    <!-- <img src="" id="img" width="1800px" height="500px"> -->
     <h1>{{ title }}</h1>
 </div>
 
 <h1 class="text-center mt-4 mb-4">Bienvenue sur Project Association</h1>
 <div class="block">
     <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos temporibus iste accusantium sit rerum harum expedita non eius repellat ipsum. Sunt quod ex excepturi odit in. Saepe vero quidem pariatur ducimus culpa labore voluptatum debitis ad iusto? Commodi, placeat aperiam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi molestias quasi minus sequi cumque, vel exercitationem, distinctio doloribus ipsum numquam eligendi, nobis velit. Unde itaque qui quaerat commodi dolorum!</p>
+</div>
+<div class="containe text-center mt-5">
+    <p id="erreur"></p>
+    <img src="" id="img" width="400px" height="400px">
 
 </div>
 
@@ -29,6 +34,10 @@
 <div class="boutton text-center">
     <button type="button" class="btn btn-primary btn-lg">Nous contacter</button>
 </div>
+
+    {% block javascript %}
+        <script src="{{ asset('js/api_image.js') }}"></script>
+    {% endblock %}
 
 
 
