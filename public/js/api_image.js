@@ -11,9 +11,6 @@ fetch('https://api.thecatapi.com/v1/images/search')
             })
         }else{
             //si l'image ne s'affiche pas. (meesage d'erreur)
-            document.getElementById('erreur').innerHTML = "Une erreur est survenu avec le Chargment de l'image"
+            document.getElementById('erreur').innerText = "Une erreur est survenue avec le chargment de l'image"
         }
     })
-
-
-    .then(data => img.src =data[0].url)

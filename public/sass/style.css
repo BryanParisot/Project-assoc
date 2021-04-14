@@ -121,4 +121,22 @@ li {
   color: red;
   font-size: 25px;
 }
+
+.display_form {
+  display: none;
+}
+
+#erreur_rna {
+  color: white;
+  background-color: #ca3d3d;
+  width: 625px;
+  padding-left: 7px;
+}
+
+#validation_rna {
+  color: white;
+  background-color: #137c13;
+  padding-left: 7px;
+  width: 325px;
+}
 /*# sourceMappingURL=style.css.map */

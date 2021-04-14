@@ -32,7 +32,7 @@ class BlogController extends AbstractController
         $articles = $paginator->paginate(
             $donnees, //on passe les données
             $request->query->getInt('page', 1), // numéro de la page en cour, 1 par default
-            21
+            2
         );
 
         return $this->render('blog/index.html.twig', [
@@ -65,10 +65,24 @@ class BlogController extends AbstractController
      */
     public function createAnnonce(Article $article = null, Request $request, EntityManagerInterface $manager)
     {
+        //tests
+        // var_dump($article->getUser()->getId());
+        // var_dump($this->getUser()->getId());
 
         // si je n'ai pas d'article(post)
         if (!$article) {
             $article = new Article(); // article vide
+
+        }else{
+        //variables 
+        $userArticleCreate = $article->getUser()->getId();
+        $userConnecte = $this->getUser()->getId();
+
+        // //utilisateur connecté et différent de l'utilisateur qui a crée l'annonce
+        if ($userConnecte != $userArticleCreate ) {
+            return $this->redirectToRoute("home");
+
+        }
 
         }
 
@@ -100,20 +114,18 @@ class BlogController extends AbstractController
                 $img->setName($fichier);
                 $article->addImage($img);
             }
-
             //si article n'existe pas (date à jour)
             if (!$article->getId()) {
                 $article->setcreatedAt(new \DateTime());
             }
-
+            
             $manager->persist($article);
             $manager->flush();
             $this->addFlash('message', 'Annonces crée avc succès');
 
-            
-
             return $this->redirectToRoute('blog_show', ['id' => $article->getId()]);
         }
+    
 
         return $this->render('blog/createAnnonce.html.twig', [
             'title' => 'Créer une annonce',
@@ -131,6 +143,7 @@ class BlogController extends AbstractController
      */
     public function show(Article $article)
     {
+
 
         return $this->render('blog/show.html.twig', [
             'title' => 'annonce',

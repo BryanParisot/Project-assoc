@@ -14,19 +14,35 @@
 
 
 <div class="container">
+<p class="text-center"> Pour vous inscrire sur la platerfome Project Association il vous suffit de rentrer votre numéro de rna sans la lettre.</p>
+<p id="validation_rna"></p>
+<p id="erreur_rna"></p>
 
-    {{ form_row(form.nom, {'label': 'Nom du président de l\'association','attr': {'placeholder':'Entrer le nom ici *'}}) }}
-    {{ form_row(form.prenom, {'label': 'Prenom du président de l\'association','attr': {'placeholder':'Entrer le prenom ici *'}}) }}
+
+    {{ form_row(form.numeroRna, {'attr': {'placeholder': "Entrer juste les numéro pas la lettre *"}}) }}
+    
+<div class="display_form">
+
+    {{ form_row(form.nom, {'label': 'Nom du président de l\'association','attr': {'class':'display','placeholder':'Entrer le nom ici *'}}) }}
+    {{ form_row(form.prenom, {'label': 'Prenom du président de l\'association','attr': {'class':'display','placeholder':'Entrer le prenom ici *'}}) }}
     {{ form_row(form.nomAssociation) }}
     {{ form_row(form.ville, {'attr': {'placeholder': "Entrer la ville ou se situe l'association *"}}) }}
     {{ form_row(form.adresse, {'attr': {'placeholder': "Entrer l'adresse ou se situe l'association *"}}) }}
     {{ form_row(form.numeroTelephone, {'attr': {'placeholder': "Entrer le numéro de l'association *"}}) }}
-    {{ form_row(form.numeroRna, {'attr': {'placeholder': "Entrer juste les numéro pas la lettre *"}}) }}
     {{ form_row(form.email) }}
     {{ form_row(form.password) }}
     {{ form_row(form.confirm_password) }}
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" required id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault"> Accépter les conditions générales</label><br>
 
-        <button class="btn btn-primary mb-4 mt-4" type="submit">
+        <input class="form-check-input" type="checkbox" required  id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault"> Accépter que vos données soient stockès dans la base de données</label>
+
+    </div>
+
+</div>
+        <button class="btn btn-primary mb-4 mt-4" type="submit" id="btn_rna">
             {% if editMode %}
                 Enregister les modification
 
@@ -41,4 +57,9 @@
 
     <!--Fin du formulaire-->
     {{ form_end(form) }}
+
+    {% block javascript %}
+        <script src="{{ asset('js/api_rna.js') }}"></script>
+    {% endblock %}
+
 {% endblock%}

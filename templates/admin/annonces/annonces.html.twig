@@ -28,10 +28,9 @@
       <td>{{ annonce.user.nomAssociation}}</td>
 
       <td>
-        <a class="btn btn-primary mb-4" href="{{ path('blog_edit', {'id': annonce.id}) }}">Modifier</a>
-        <a href="{{ path('delete_article_admin', { id: annonce.id }) }}"class="btn btn-warning" >x</a>
+        <a class="btn btn-primary" href="{{ path('blog_edit', {'id': annonce.id}) }}">Modifier</a>
+        <a href="{{ path('delete_article_admin', { id: annonce.id }) }}" class="btn btn-warning" >x</a>
       </td>
-
 
     </tr>
     {% endfor %}

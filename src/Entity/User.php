@@ -85,7 +85,7 @@ class User implements UserInterface
      * Assert\email()
      * Assert\Regex(
      *     pattern="/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/",
-     *     message="not_valid_email"
+     *     message="Votre email n'est pas valide"
      * )
      */
     private $email;
@@ -245,7 +245,7 @@ class User implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
+        // guarantee every user at least has ROLE_A
         $roles[] = 'ROLE_A';
 
         return array_unique($roles);

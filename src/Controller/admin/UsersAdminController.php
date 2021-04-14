@@ -90,6 +90,7 @@ class UsersAdminController extends AbstractController
      */
     public function delete(User $user)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $em = $this->getDoctrine()->getManager();
         $em->remove($user);
         $em->flush();
